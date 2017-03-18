@@ -1,0 +1,13 @@
+#default
+blob-store
+compile-cache
+dev
+storage
+.apm
+.node-gyp
+.npm
+
+
+#custom
+recovery
+projects.cson
