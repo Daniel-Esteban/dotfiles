@@ -1,0 +1,52 @@
+"*":
+  "atom-autocomplete-php":
+    binComposer: "/usr/bin/composer"
+  "atom-beautify":
+    general:
+      _analyticsUserId: "d6af24df-688a-4a9e-ae32-de3a2f38f48d"
+    php: {}
+  core:
+    closeDeletedFileTabs: true
+    telemetryConsent: "no"
+    themes: [
+      "one-light-ui"
+      "one-dark-syntax"
+    ]
+  docblockr:
+    extend_double_slash: false
+  editor:
+    fontSize: 15
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+    zoomFontWhenCtrlScrolling: false
+  emmet: {}
+  "exception-reporting":
+    userId: "181d4171-1467-4fc2-a0dd-5dc3d5cc02fd"
+  "git-diff": {}
+  linter: {}
+  "linter-ui-default":
+    decorateOnTreeView: "Files and Directories"
+    statusBarRepresents: "Entire Project"
+  minimap: {}
+  "php-cs-fixer": {}
+  "php-integrator-base": {}
+  pigments:
+    ignoredNames: [
+      "vendor/*"
+      "node_modules/*"
+      "spec/*"
+      "test/*"
+      "less/*"
+    ]
+    markerType: "native-square-dot"
+  "project-manager": {}
+  "rest-client":
+    tab_key_behavior:
+      soft_tab_length: 4
+  "tree-view":
+    squashDirectoryNames: true
+  welcome:
+    showOnStartup: false
