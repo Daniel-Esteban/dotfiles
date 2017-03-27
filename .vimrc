@@ -7,6 +7,8 @@ syntax enable "Sintaxis ON
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'jiangmiao/auto-pairs'
+
 Plug 'scrooloose/nerdtree'
 
 Plug 'kien/ctrlp.vim'
@@ -16,6 +18,12 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+"Airline theme
+let g:airline_theme='qwq'
+
+"CtrlP dont change working dir
+let g:ctrlp_working_path_mode = 0
 
 
 colorscheme solarized "Tema solarized
@@ -31,13 +39,12 @@ set shiftwidth=4
 "/Indentation
 
 "Interfer with movement mappings <C-j><C-k>
-let g:NERDTreeMapJumpPrevSibling='J'
-let g:NERDTreeMapJumpNextSibling='K'
+let g:NERDTreeMapJumpPrevSibling=''
+let g:NERDTreeMapJumpNextSibling=''
 
 set showcmd
 set cursorline
 
-filetype indent on
 
 set wildmenu
 
@@ -57,6 +64,20 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+"Move lines
+nnoremap <C-Up> ddkkp
+inoremap <C-Up> <esc> ddkkp
+nnoremap <C-Down> ddp
+inoremap <C-Down> <esc>ddp
+
+"Autoclose
+"inoremap ( ()<esc>hli
+"inoremap [ []<esc>hli
+"inoremap { {}<esc>hli
+
+
+
+
 "No delay for esc key
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -70,9 +91,6 @@ set writebackup
 "Invisible chars
 set listchars=tab:▸\ ,eol:¬,trail:·
 set list!
-"Invisible character colors
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
 
 
 "Vim-Airline
