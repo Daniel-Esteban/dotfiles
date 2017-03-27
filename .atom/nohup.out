@@ -1,0 +1,5 @@
+
+(electron-1.3.13:7865): GVFS-RemoteVolumeMonitor-WARNING **: Owner of volume monitor org.gtk.vfs.GPhoto2VolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+
+(electron-1.3.13:7865): GConf-WARNING **: Got Disconnected from DBus.
+

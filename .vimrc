@@ -34,7 +34,6 @@ set shiftwidth=4
 let g:NERDTreeMapJumpPrevSibling='J'
 let g:NERDTreeMapJumpNextSibling='K'
 
-
 set showcmd
 set cursorline
 
@@ -58,7 +57,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
+"No delay for esc key
+set timeoutlen=1000 ttimeoutlen=0
 
 "Backups
 set backup
