@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'kien/ctrlp.vim'
 
@@ -17,6 +17,11 @@ Plug 'bling/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'scrooloose/syntastic'
+
+Plug 'ervandew/supertab'
+
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' }
 call plug#end()
 
 "Airline theme
@@ -24,7 +29,20 @@ let g:airline_theme='qwq'
 
 "CtrlP dont change working dir
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_show_hidden = 1
 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+"Linea limite
+set textwidth=80
+set colorcolumn=+1
+
+
+"Enable mouse
+set mouse=a
 
 colorscheme solarized "Tema solarized
 set background=dark "Fondo oscuro
@@ -37,10 +55,6 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 "/Indentation
-
-"Interfer with movement mappings <C-j><C-k>
-let g:NERDTreeMapJumpPrevSibling=''
-let g:NERDTreeMapJumpNextSibling=''
 
 set showcmd
 set cursorline
@@ -65,18 +79,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Move lines
-nnoremap <C-Up> ddkkp
-inoremap <C-Up> <esc> ddkkp
+nnoremap <C-Up> ddkP
+inoremap <C-Up> <esc> ddkP
 nnoremap <C-Down> ddp
 inoremap <C-Down> <esc>ddp
-
-"Autoclose
-"inoremap ( ()<esc>hli
-"inoremap [ []<esc>hli
-"inoremap { {}<esc>hli
-
-
-
 
 "No delay for esc key
 set timeoutlen=1000 ttimeoutlen=0
@@ -90,8 +96,11 @@ set writebackup
 
 "Invisible chars
 set listchars=tab:▸\ ,eol:¬,trail:·
-set list!
-
+set list
 
 "Vim-Airline
 set laststatus=2
+
+"Supertab
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "context"
