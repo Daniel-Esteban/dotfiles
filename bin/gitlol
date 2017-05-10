@@ -1,0 +1,7 @@
+#!/bin/zsh
+while true
+do
+clear
+git lol
+sleep 9
+done

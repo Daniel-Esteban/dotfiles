@@ -1,0 +1,7 @@
+#!/bin/zsh
+while true
+do
+clear
+tree -a -L 3 .
+sleep 9
+done

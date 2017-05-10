@@ -1,3 +1,5 @@
 **.swp
-bin/*
 .vim/plugged
+bin/*
+!bin/gitlol
+!bin/mytree
