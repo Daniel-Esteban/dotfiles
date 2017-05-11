@@ -40,9 +40,8 @@ noremap <Right> <NOP>
 set textwidth=80
 set colorcolumn=+1
 
-
-"Enable mouse
-set mouse=a
+"Auto reload if file changes
+set autoread
 
 colorscheme solarized "Tema solarized
 set background=dark "Fondo oscuro
@@ -83,6 +82,9 @@ nnoremap <C-Up> ddkP
 inoremap <C-Up> <esc> ddkP
 nnoremap <C-Down> ddp
 inoremap <C-Down> <esc>ddp
+
+"Go to tag declaration
+noremap <leader>r <esc><C-]>
 
 "No delay for esc key
 set timeoutlen=1000 ttimeoutlen=0
