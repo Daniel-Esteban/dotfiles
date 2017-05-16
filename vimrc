@@ -9,6 +9,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'chriskempson/base16-vim'
+
 Plug 'airblade/vim-gitgutter'
 
 Plug 'kien/ctrlp.vim'
@@ -83,6 +85,9 @@ inoremap <C-Up> <esc> ddkP
 nnoremap <C-Down> ddp
 inoremap <C-Down> <esc>ddp
 
+"Make tags in current dir
+command MakeTags execute "!ctags -R ."
+
 "Go to tag declaration
 noremap <leader>r <esc><C-]>
 
@@ -106,3 +111,12 @@ set laststatus=2
 "Supertab
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"
+
+"Base 16
+let base16colorspace=256
+let g:airline_theme='base16'
+
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
