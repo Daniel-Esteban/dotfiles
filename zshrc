@@ -1,5 +1,6 @@
 
-#ZSH_THEME="wezm"
+
+iñaki
 
 plugins=(git docker)
 
