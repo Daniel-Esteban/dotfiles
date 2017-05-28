@@ -1,10 +1,12 @@
 let mapleader=","
+let localmapleader="-"
 
 set nocompatible
 
 filetype indent plugin on
 syntax enable "Sintaxis ON
 
+"VimPlug {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
@@ -13,106 +15,169 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'kien/ctrlp.vim'
 
 Plug 'bling/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'scrooloose/nerdtree'
+
 Plug 'scrooloose/syntastic'
 
-Plug 'ervandew/supertab'
+Plug 'sirver/ultisnips'
 
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' }
 call plug#end()
+"}}}
 
-"Airline theme
-let g:airline_theme='qwq'
+"General Config {{{
 
-"CtrlP dont change working dir
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_show_hidden = 1
-
+"Disable arrows in normal mode {{{
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+"}}}
 
-"Linea limite
+"ShoftLimit line {{{
 set textwidth=80
 set colorcolumn=+1
+"}}}
 
-"Auto reload if file changes
+"Auto reload if file changes {{{
 set autoread
+"}}}
 
-colorscheme solarized "Tema solarized
-set background=dark "Fondo oscuro
+"Line numbers {{{
+set number
+set relativenumber
+"}}}
 
-set number "Numero de lineas
-
-"Indentation
+"Indentation {{{
 set autoindent
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-"/Indentation
+"}}}
 
+"Folding {{{
+set foldmethod=indent
+"}}}
+
+"Move vertically by visual line{{{
+nnoremap j gj
+nnoremap k gk
+"}}}
+
+" jk is escape {{{
+inoremap jk <esc>
+"}}}
+
+"Move though Panes {{{
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+"}}}
+
+"Move lines {{{
+nnoremap <C-Up> ddkP
+inoremap <C-Up> <esc> ddkP
+nnoremap <C-Down> ddp
+inoremap <C-Down> <esc>ddp
+"}}}
+
+"Make tags in current dir {{{
+command! MakeTags execute "!ctags -R ."
+"}}}
+
+"Go to tag declaration {{{
+noremap <leader>r <esc><C-]>
+"}}}
+
+"No delay for esc key {{{
+set timeoutlen=1000 ttimeoutlen=0
+"}}}
+
+"Backups {{{
+set nobackup
+"set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+"set backupskip=/tmp/*,/private/tmp/*
+"set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set nowritebackup
+"}}}
+
+"Invisible chars {{{
+set listchars=tab:▸\ ,eol:¬,trail:·
+set list
+"}}}
+
+"Cursor corlor {{{
+
+"}}}
+
+"Remove trailing whitespace on save{{{
+autocmd! BufWritePre * :%s/\s\+$//e
+"}}}
+
+"Other {{{
 set showcmd
 set cursorline
-
 
 set wildmenu
 
 set showmatch
 set incsearch
 set hlsearch
+"}}}
 
-" move vertically by visual line
-nnoremap j gj
-nnoremap k gk
+"Move lines up and down{{{
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+"}}}
 
-" jk is escape
-inoremap jk <esc>
+"Change cursor shape in insert mode{{{
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+"}}}
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+"}}}
 
-"Move lines
-nnoremap <C-Up> ddkP
-inoremap <C-Up> <esc> ddkP
-nnoremap <C-Down> ddp
-inoremap <C-Down> <esc>ddp
+"Plugin Config {{{
 
-"Make tags in current dir
-command MakeTags execute "!ctags -R ."
+"NERDTree {{{
+noremap <leader>t <esc>:NERDTreeToggle<CR>
+"}}}
 
-"Go to tag declaration
-noremap <leader>r <esc><C-]>
-
-"No delay for esc key
-set timeoutlen=1000 ttimeoutlen=0
-
-"Backups
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set writebackup
-
-"Invisible chars
-set listchars=tab:▸\ ,eol:¬,trail:·
-set list
-
-"Vim-Airline
+"Vim-Airline {{{
+let g:airline_theme='qwq'
 set laststatus=2
+"}}}
 
-"Supertab
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-let g:SuperTabDefaultCompletionType = "context"
+"CtrlP{{{
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_show_hidden = 1
+"}}}
 
-"Base 16
+"UltiSnippets {{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/UltiSnips', 'UltiSnips']
+"}}}
+
+"Base 16{{{
 let base16colorspace=256
 let g:airline_theme='base16'
 
@@ -120,3 +185,6 @@ if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
 endif
+"}}}
+
+"}}}

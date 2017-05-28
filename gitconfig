@@ -11,3 +11,5 @@
 	amend = commit -a --amend
 [branch]
 	autosetuprebase = always
+[merge]
+	tool = vimdiff2
