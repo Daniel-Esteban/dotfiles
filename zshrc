@@ -1,7 +1,3 @@
-
-
-iñaki
-
 plugins=(git docker)
 
 # Preferred editor for local and remote sessions
