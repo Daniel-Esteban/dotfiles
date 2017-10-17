@@ -30,6 +30,8 @@ Plug 'scrooloose/syntastic'
 Plug 'sirver/ultisnips'
 
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' }
+
+Plug 'vim-scripts/Ada-Bundle', {'for': 'ada'}
 call plug#end()
 "}}}
 
@@ -72,22 +74,11 @@ nnoremap j gj
 nnoremap k gk
 "}}}
 
-" jk is escape {{{
-inoremap jk <esc>
-"}}}
-
 "Move though Panes {{{
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-"}}}
-
-"Move lines {{{
-nnoremap <C-Up> ddkP
-inoremap <C-Up> <esc> ddkP
-nnoremap <C-Down> ddp
-inoremap <C-Down> <esc>ddp
 "}}}
 
 "Make tags in current dir {{{
@@ -137,6 +128,10 @@ set hlsearch
 "Move lines up and down{{{
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
+nnoremap <C-Down> :m .+1<CR>==
+inoremap <C-Down> <esc> :m .+1<CR>==
+nnoremap <C-Up> :m .-2<CR>==
+inoremap <C-Up> <esc> :m .-2<CR>==
 "}}}
 
 "Change cursor shape in insert mode{{{
