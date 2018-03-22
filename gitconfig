@@ -1,9 +1,11 @@
 [user]
-	email = dani.este.bri@gmail.com
-	name = Daniel Esteban
+	email = dastebi@hotmail.com
+	name = Daniel-Esteban
 [alias]
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lil = ! git log --graph --decorate --pretty=oneline --abbrev-commit --all | emojify | less -r
+        log = ! git log --oneline --color | emojify | less -r
 	mylog = log --pretty=format:'%h %s [%an]' --graph
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	wip = commit -am "WIP"
