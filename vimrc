@@ -32,6 +32,9 @@ Plug 'sirver/ultisnips'
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' }
 
 Plug 'vim-scripts/Ada-Bundle', {'for': 'ada'}
+
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+
 call plug#end()
 "}}}
 
@@ -134,6 +137,18 @@ nnoremap <C-Up> :m .-2<CR>==
 inoremap <C-Up> <esc> :m .-2<CR>==
 "}}}
 
+"Autocomplete like IDE{{
+set completeopt=longest,menuone
+inoremap <C-Space> <C-x><C-o>
+"}}
+
+"No swap files{{
+set nobackup       "no backup files
+set nowritebackup  "only in case you don't want a backup file while editing
+set noswapfile     "no swap files
+"}}
+
+
 "Change cursor shape in insert mode{{{
 if has("autocmd")
   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
@@ -182,4 +197,20 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 "}}}
 
-"}}}
+" Syntastic{{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }}}
+
+" Rust {{{
+let g:rustfmt_autosave = 1
+let g:syntastic_rust_checkers = ['rustc']
+" }}}
+
+"}}
